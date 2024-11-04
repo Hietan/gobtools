@@ -5,7 +5,9 @@ description = "Library to control and interact with the Goblin ecosystem."
 authors = [
     { name = "Hietan", email = "hietan622@gmail.com" }
 ]
-dependencies = []
+dependencies = [
+    "requests>=2.32.3",
+]
 readme = "README.md"
 licence = "Apache-2.0"
 keywords = ["Goblin", "Goblin Weaver", "Goblin Miner"]
