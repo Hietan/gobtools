@@ -1,12 +1,14 @@
 [project]
 name = "gobtools"
 version = "0.1.0"
-description = "Add your description here"
+description = "Library to control and interact with the Goblin ecosystem."
 authors = [
     { name = "Hietan", email = "hietan622@gmail.com" }
 ]
 dependencies = []
 readme = "README.md"
+licence = "Apache-2.0"
+keywords = ["Goblin", "Goblin Weaver", "Goblin Miner"]
 requires-python = ">= 3.8"
 
 [build-system]
@@ -18,7 +20,21 @@ managed = true
 dev-dependencies = [
     "ruff>=0.7.2",
     "mypy>=1.13.0",
+    "pytest>=8.3.3",
 ]
+
+[tool.rye.scripts]
+main = "python -m src.main"
+debug = "python -m src.main --debug"
+test = "pytest"
+lint = "ruff check src"
+lint-fix = "ruff check src --fix"
+type = "mypy src"
+format = "ruff format src"
+format-check = "ruff format src --check"
+
+[tool.ruff]
+select = ["ALL"]
 
 [tool.hatch.metadata]
 allow-direct-references = true
