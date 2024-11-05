@@ -7,6 +7,9 @@ class WeaverController(Client):
     def __post_with_added_values(self, path: str, data: dict, added_values: list[str]) -> dict:
         if added_values:
             data["addedValues"] = added_values
+        else:
+            data["addedValues"] = []
+        print(data)
         return self.post_dict(path, data)
 
     def __post_releases(self, path: str, group_id: str, artifact_id: str, version: str, added_values: list[str] = None) -> dict:
