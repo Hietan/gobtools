@@ -1,0 +1,39 @@
+name: CI (Rye)
+
+on: pull_request
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Rye
+        run: |
+          curl -sSf https://rye.astral.sh/get | bash
+          echo "$HOME/.rye/shims" >> $GITHUB_PATH
+        env:
+          RYE_INSTALL_OPTION: "--yes"
+
+      - name: Install Dependencies
+        run: |
+          rye config --set-bool behavior.use-uv=true
+          rye sync --all-features --no-lock
+
+      - name: Format Check
+        run: |
+          rye run ruff format . --check
+
+      - name: Lint Check
+        run: |
+          rye run ruff check .
+
+      - name: Type Check
+        run: |
+          rye run mypy .
+
+      - name: Run Tests
+        run: |
+          rye run pytest
