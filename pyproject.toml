@@ -23,6 +23,7 @@ dev-dependencies = [
     "ruff>=0.7.2",
     "mypy>=1.13.0",
     "pytest>=8.3.3",
+    "types-requests>=2.32.0.20241016",
 ]
 
 [tool.rye.scripts]
@@ -38,8 +39,9 @@ format-check = "ruff format src --check"
 [tool.ruff.lint]
 select = ["ALL"]
 ignore = [
+		"COM812", "D203", "ISC001",  # Disabling to prevent conflicts with the formatter
     "D211",  # Ignoring D211 due to conflict with D203 (requires one blank line before class definitions).
-		"D213"   # Ignoring D213 due to conflict with D212 (following D212 to keep summary on the first line for multi-line docstrings).
+		"D212"   # Ignoring D212 due to conflict with D213 (following D213 to start multi-line docstrings on the second line).
 ]
 
 [tool.hatch.metadata]

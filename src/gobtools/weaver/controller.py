@@ -1,10 +1,35 @@
+# ruff: noqa: D102
+
+"""
+Provides the WeaverController class for managing HTTP requests.
+
+This module extends the functionality of the Client class to handle artifact retrieval,
+release management, and various graph operations. It adds specific methods to
+interact with API endpoints related to artifacts, releases, and graph data traversal.
+"""
+
 from __future__ import annotations
 
 from gobtools.utils.client import Client
 
 
 class WeaverController(Client):
+    """
+    A controller for managing HTTP requests related to artifacts, releases, and graphs.
+
+    This class extends the Client class, adding methods specific to handling artifact
+    retrieval, graph operations, and release management.
+    """
+
     def __init__(self, path_root: str) -> None:
+        """
+        Initialize the WeaverController with a base URL.
+
+        Arguments:
+        ---------
+            path_root (str): The base URL for HTTP requests.
+
+        """
         super().__init__(path_root)
 
     def __post_with_added_values(
