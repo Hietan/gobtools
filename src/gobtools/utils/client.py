@@ -8,7 +8,6 @@ and sending JSON-formatted POST requests to specified endpoints.
 import json
 from urllib.parse import urljoin
 
-
 import requests
 
 
