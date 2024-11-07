@@ -1,5 +1,7 @@
-# gobtools
+# GobTools
 Library to control and interact with the Goblin ecosystem.”
+
+[![Apache-2.0](https://custom-icon-badges.herokuapp.com/badge/license-Apache%202.0-8BB80A.svg?logo=law&logoColor=white)]()
 
 ## Installation
 
