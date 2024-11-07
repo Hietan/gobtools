@@ -35,8 +35,12 @@ type = "mypy src"
 format = "ruff format src"
 format-check = "ruff format src --check"
 
-[tool.ruff]
+[tool.ruff.lint]
 select = ["ALL"]
+ignore = [
+    "D211",  # Ignoring D211 due to conflict with D203 (requires one blank line before class definitions).
+		"D213"   # Ignoring D213 due to conflict with D212 (following D212 to keep summary on the first line for multi-line docstrings).
+]
 
 [tool.hatch.metadata]
 allow-direct-references = true
