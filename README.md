@@ -1,5 +1,5 @@
 # GobTools
-Library to control and interact with the Goblin ecosystem.”
+Library to control and interact with the Goblin ecosystem.
 
 [![Apache-2.0](https://custom-icon-badges.herokuapp.com/badge/license-Apache%202.0-8BB80A.svg?logo=law&logoColor=white)]()
 ![Github Tag](https://img.shields.io/github/v/tag/Hietan/gobtools)
@@ -9,7 +9,7 @@ Library to control and interact with the Goblin ecosystem.”
 GobTools streamlines access to GoblinWeaver.\
 By simply passing information as arguments to Python functions, requests are sent effortlessly, and responses are returned as dictionaries.
 
-Please refer to the (official repository)[https://github.com/Goblin-Ecosystem/goblinWeaver.git] for more details about GoblinWeaver.
+Please refer to the [official repository](https://github.com/Goblin-Ecosystem/goblinWeaver.git) for more details about GoblinWeaver.
 
 ## Installation
 
@@ -62,7 +62,11 @@ The function `get_artifact_releases` sends POST requests to `<your-api-server-ur
 You can receive the results as dictionary.
 
 ```python
-releases = controller.get_artifact_releases("org.apache.logging.log4j", "log4j-core", ["CVE", "FRESHNESS"])
+releases = controller.get_artifact_releases(
+    "org.apache.logging.log4j", 
+    "log4j-core", 
+    ["CVE", "FRESHNESS"]
+)
 ```
 
 Other REST API endpoints can also be accessed through GobTools function.\
