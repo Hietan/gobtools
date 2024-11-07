@@ -1,9 +1,6 @@
 name: Auto Format on Push (Rye)
 
-on:
-  push:
-    branches:
-      - '*':
+on: push
 
 jobs:
   format:
