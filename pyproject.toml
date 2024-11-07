@@ -1,6 +1,6 @@
 [project]
 name = "gobtools"
-version = "0.1.0"
+version = "0.1.1"
 description = "Library to control and interact with the Goblin ecosystem."
 authors = [
     { name = "Hietan", email = "hietan622@gmail.com" }
