@@ -1,0 +1,40 @@
+name: Auto Format on Push (Rye)
+
+on:
+  push:
+    branches:
+      - '*':
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Install Rye
+        run: |
+          curl -sSf https://rye.astral.sh/get | bash
+          echo "$HOME/.rye/shims" >> $GITHUB_PATH
+          rye config --set-bool behavior.use-uv=true
+        env:
+          RYE_INSTALL_OPTION: "--yes"
+
+      - name: Install dependencies
+        run: |
+          rye sync --all-features --no-lock
+
+      - name: Format
+        run: |
+          rye run format .
+
+      - name: Commit and Push Changes Automaticaly
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          if [ -n "$(git status --porcelain)" ]; then
+            git add .
+            git commit -m "Auto Format by GitHub Actions"
+            git push
+          fi
