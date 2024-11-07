@@ -30,11 +30,11 @@ dev-dependencies = [
 main = "python -m src.main"
 debug = "python -m src.main --debug"
 test = "pytest"
-lint = "ruff check src"
-lint-fix = "ruff check src --fix"
-type = "mypy src"
-format = "ruff format src"
-format-check = "ruff format src --check"
+lint = "ruff check ."
+lint-fix = "ruff check . --fix"
+type = "mypy ."
+format = "ruff format ."
+format-check = "ruff format . --check"
 
 [tool.ruff.lint]
 select = ["ALL"]

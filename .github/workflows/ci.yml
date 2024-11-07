@@ -22,15 +22,15 @@ jobs:
 
       - name: Format Check
         run: |
-          rye run ruff format src --check
+          rye run ruff format . --check
 
       - name: Lint Check
         run: |
-          rye run ruff check src
+          rye run ruff check .
 
       - name: Type Check
         run: |
-          rye run mypy src
+          rye run mypy .
 
       - name: Run Tests
         run: |
