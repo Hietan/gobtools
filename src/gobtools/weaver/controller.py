@@ -36,7 +36,7 @@ class WeaverController(Client):
         self,
         path: str,
         data: dict,
-        added_values: list[str],
+        added_values: list[str] | None = None,
     ) -> dict:
         if added_values:
             data["addedValues"] = added_values
@@ -57,11 +57,12 @@ class WeaverController(Client):
 
     def __post_graph(
         self,
+        path: str,
         releases: list[dict],
         added_values: list[str] | None = None,
     ) -> dict:
         data = {"releases": releases}
-        return self.__post_with_added_values("/graph", data, added_values)
+        return self.__post_with_added_values(path, data, added_values)
 
     def __post_artifact(
         self,
@@ -137,7 +138,7 @@ class WeaverController(Client):
         releases: list[dict],
         added_values: list[str] | None = None,
     ) -> dict:
-        return self.__post_graph(releases, added_values)
+        return self.__post_graph("/graph/rootedGraph", releases, added_values)
 
     def get_graph_direct_possibilities_rooted(
         self,
@@ -160,7 +161,7 @@ class WeaverController(Client):
         artifact_id: str,
         added_values: list[str] | None = None,
     ) -> dict:
-        return self.__post_artifact(group_id, artifact_id, added_values)
+        return self.__post_artifact("/artifact", group_id, artifact_id, added_values)
 
     def get_artifact_releases(
         self,
